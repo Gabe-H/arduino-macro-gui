@@ -1,0 +1,36 @@
+body {
+    visibility: visible;
+}
+
+table {
+    margin: 50px;
+}
+
+button {
+    size: 50px;
+    margin: 2px;
+}
+
+button:hover {
+    background-color: grey;
+}
+
+button:active {
+    font-weight: bold;
+}
+
+#a:hover {
+    background-color: red;
+}
+
+#b:hover {
+    background-color: green;
+}
+
+#c:hover {
+    background-color: blue;
+}
+
+#d:hover {
+    background-color: yellow;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Yo mama</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    </head>
+    <body>
+        <h1>Select a key to edit the keybind</h1>
+
+        <table id="grid">
+            <tbody>
+                <tr>
+                    <td><button type="button" id="1" class="macro">1</button></td>
+                    <td><button type="button" id="2" class="macro">2</button></td>
+                    <td><button type="button" id="3" class="macro">3</button></td>
+                    <td><button type="button" id="a" class="mode">A</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" id="4" class="macro">4</button></td>
+                    <td><button type="button" id="5" class="macro">5</button></td>
+                    <td><button type="button" id="6" class="macro">6</button></td>
+                    <td><button type="button" id="b" class="mode">B</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" id="7" class="macro">7</button></td>
+                    <td><button type="button" id="8" class="macro">8</button></td>
+                    <td><button type="button" id="9" class="macro">9</button></td>
+                    <td><button type="button" id="c" class="mode">C</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" id="10" class="macro">*</button></td>
+                    <td><button type="button" id="11" class="macro">0</button></td>
+                    <td><button type="button" id="12" class="macro">#</button></td>
+                    <td><button type="button" id="d" class="mode">D</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <label for="customize">Mode:</label>
+        <label for="customize" id="mode"></label>
+        <label for="customize">, Button: </label>
+        <label for="customize" id="button"></label>
+
+        <input type="text" id="customize" style="width: 50px"/>
+        <button type="button" for="customize" id="ctrl" class="modifier">Ctrl</button>
+        <button type="button" for="customize" id="shift" class="modifier">Shift</button>
+        <button type="button" for="customize" id="alt" class="modifier">Alt</button>
+        <br><br>
+        <button type="submit" id="submit">Submit</button>
+        <br>
+        <label id="result">result</label>
+        <br>
+        <button type="button" id="check">Check</button>
+        <button type="button" id="save">Save to JSON</button>
+
+        <script type="text/javascript" src="macro.js"></script>
+    </body>
+</html>

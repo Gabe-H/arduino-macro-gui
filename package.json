@@ -1,0 +1,26 @@
+{
+  "name": "macro-creation",
+  "version": "1.0.0",
+  "description": "create a json for arduino macro board",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gabe-H/arduino-macro-gui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gabe-H/arduino-macro-gui/issues"
+  },
+  "homepage": "https://github.com/Gabe-H/arduino-macro-gui#readme",
+  "devDependencies": {
+    "electron": "^10.1.1"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
