@@ -1,4 +1,5 @@
 var $ = require('jquery')
+var hotkeys = require('hotkeys-js')
 
 var macrosJSON;
 $.ajax({
@@ -10,15 +11,13 @@ $.ajax({
     }
 })
 console.log(macrosJSON)
+
+// Initial variables and sets
 var mode = 'A';
 var macro = '1';
-$('#a').css('background-color', 'red')
-$('#1').css('background-color', 'grey')
-document.getElementById('mode').innerHTML = mode
-document.getElementById('button').innerHTML = '1'
 
 $('.macro').click(function() {
-    document.getElementById('customize').value = ''
+    resetField();
     $('.macro').css('background-color', '')
     $(this).css('background-color', 'grey')
     var args = {
@@ -28,11 +27,6 @@ $('.macro').click(function() {
     macro = this.id
     addLabel(args)
 });
-
-$('.modifier').click(function() {
-    $('.modifier').css('background-color', '')
-    $(this).css('background-color', 'grey')
-})
 
 $('.mode').click(function () {
     document.getElementById('customize').value = ''
@@ -61,17 +55,49 @@ $('.mode').click(function () {
     }
 })
 
+var firing
+var ctrl = false
+var shift = false
+var alt = false
+
 $('#submit').click(modifyJSON)
 $('#check').mousedown(showJSON)
 $('#check').mouseup(resetJSON)
-
-var firing
 $('#save').click(() => {
     if(firing)
         return;
     saveText(JSON.stringify(macrosJSON), 'file.json')
 })
-//$('#save').click(saveText(macrosJSON, 'file.json'))
+
+$('#ctrl').click(() => {
+    if (!ctrl) {
+        $("#ctrl").css('background-color', 'grey')
+        ctrl = true;
+    } else {
+        $("#ctrl").css('background-color', '')
+        ctrl = false;
+    }
+})
+
+$('#shift').click(() => {
+    if (!shift) {
+        $("#shift").css('background-color', 'grey')
+        shift = true;
+    } else {
+        $("#shift").css('background-color', '')
+        shift = false;
+    }
+})
+
+$('#alt').click(() => {
+    if (!alt) {
+        $("#alt").css('background-color', 'grey')
+        alt = true;
+    } else {
+        $("#alt").css('background-color', '')
+        alt = false;
+    }
+})
 
 function addLabel(args) {
     if (mode) {
@@ -82,19 +108,26 @@ function addLabel(args) {
 function modifyJSON() {
     var myValue = document.getElementById('customize').value
     myValue = myValue.toUpperCase()
-    macrosJSON[mode][macro] = myValue
+    macrosJSON[mode][macro] = {
+        "key": myValue,
+        "ctrl": ctrl,
+        "shift": shift,
+        "alt": alt
+    }
     console.log(macrosJSON)
 }
 
 function showJSON() {
-    var idArray = [];
+    var idArray = [macrosJSON];
     $('.macro').each(function () {
         idArray.push(this.id);
     });
     for(i=1;i<idArray.length+1;i++) {
-        var thisMacro = macrosJSON[mode][i]
-        if (thisMacro.length != undefined) {
-            document.getElementById(i).innerHTML = thisMacro
+        if (macrosJSON[mode][i]["key"]) {
+            var thisMacro = macrosJSON[mode][i]["key"]
+            if (thisMacro.length) {
+                document.getElementById(i).innerHTML = thisMacro
+            }
         }
     }
 }
@@ -128,3 +161,13 @@ function saveText(text, filename){
     a.setAttribute('download', filename);
     a.click()
   }
+
+function resetField() {
+    document.getElementById('customize').value = ''
+
+
+}
+  //hotkeys('*', function(event, handler) {
+  //  console.log(event.target)
+  //  document.getElementById('customize').value = handler.key
+  //});

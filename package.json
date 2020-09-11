@@ -21,6 +21,7 @@
     "electron": "^10.1.1"
   },
   "dependencies": {
+    "hotkeys-js": "^3.8.1",
     "jquery": "^3.5.1"
   }
 }
